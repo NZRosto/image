@@ -1255,7 +1255,7 @@ pub trait GenericImage: GenericImageView {
 /// will get added. This inconvenience may alternatively get resolved if Rust allows some forms of
 /// specialization, which might make this trick unnecessary and thus also allows for a direct
 /// implementation.
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq)]
 pub struct SubImage<I> {
     inner: SubImageInner<I>,
 }
@@ -1264,7 +1264,7 @@ pub struct SubImage<I> {
 ///
 /// This type is _nominally_ `pub` but it is not exported from the crate. It should be regarded as
 /// an existential type in any case.
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq)]
 pub struct SubImageInner<I> {
     image: I,
     xoffset: u32,
